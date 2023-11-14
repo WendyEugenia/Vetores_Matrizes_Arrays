@@ -6,25 +6,39 @@ public class Matriz1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner leia = new Scanner(System.in);
-		int vetor[] = {2,5,1,3,4,9,7,8,10,6};
-		int numProcurado;
-		int x;
-		int cont = 0;
-		
-		System.out.println("\nDigite o número que procura: ");
-		numProcurado = leia.nextInt();
-		
-		for(x = 0;x < vetor.length; x++) {
+		int matriz[][] = new int[3][3];
+		int linha,coluna,somaDiagonal=0,somaDiagSec=0;
+		Scanner ler = new Scanner(System.in);
 			
-				if(numProcurado == vetor[x]) {
-					cont = x;
+		for(linha=0;linha<3;linha++) {
+			for(coluna=0;coluna<3;coluna++) {
+				System.out.println("\nEntre com um número: ");
+				matriz[linha][coluna] = ler.nextInt();
+										
+			if(linha == coluna) {
+				somaDiagonal += matriz[linha][coluna];
+					}
+					
+			if((linha+coluna) == 2) {
+				somaDiagSec += matriz[linha][coluna];
+					}
 				}
 			}
-				if(cont == 0) {
-					System.out.println("\nO número "+numProcurado+" não foi encontrado!");
-				}else {
-				System.out.println("\nO número "+numProcurado+" está na posição "+cont);
-				}
-		}
+			
+		
+		 System.out.println("\nElementos da Diagonal Principal:");
+	        for (linha = 0; linha < 3; linha++) {
+	            System.out.print(matriz[linha][linha] + " ");
+	        }
+
+	        System.out.println("\nElementos da Diagonal Secundária:");
+	        for (linha = 0; linha < 3; linha++) {
+	            System.out.print(matriz[linha][2 - linha] + " ");
+	        }
+
+	        System.out.println("\nSomatório da diagonal principal: " + somaDiagonal);
+	        System.out.println("Somatório da diagonal secundária: " + somaDiagSec);
+
+	     
+	    }
 	}
